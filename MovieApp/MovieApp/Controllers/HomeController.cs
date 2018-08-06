@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using MovieApp.Models;
 
 namespace MovieApp.Controllers
-{
+{/*dodao sam usera*/
     public class HomeController : Controller
     {
         private MoviesDBEntities db = new MoviesDBEntities();
