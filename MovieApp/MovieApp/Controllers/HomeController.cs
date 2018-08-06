@@ -8,8 +8,44 @@ using System.Web;
 using System.Web.Mvc;
 using MovieApp.Models;
 
+
 namespace MovieApp.Controllers
 {/*dodao sam usera*/
+    public class SessionWrapper
+    {
+
+        public SessionWrapper()
+        {
+
+        }
+
+        public static string testSession
+        {
+            get
+            {
+                // Gets object from session
+                Object obj = HttpContext.Current.Session["test"];
+                // Check if value is null
+                if (obj == null)
+                {
+                    // If value is null, return default value
+                    return "test";
+                }
+                else
+                {
+                    // If value is not null, return it
+                    return (string)obj;
+                }
+            }
+            set
+            {
+                // Adds value to session variable
+                HttpContext.Current.Session["test"] = value;
+            }
+
+        }
+    }
+
     public class HomeController : Controller
     {
         private MoviesDBEntities db = new MoviesDBEntities();
@@ -17,6 +53,8 @@ namespace MovieApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            SessionWrapper.testSession = "Test vrednost za sesiju!";
+           // return (SessionWrapper.testSession);
             return View(db.Tables.ToList());
         }
 

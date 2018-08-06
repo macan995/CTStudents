@@ -26,5 +26,7 @@ namespace MovieApp.Models
         }
     
         public virtual DbSet<Table> Tables { get; set; }
+
+       
     }
 }
